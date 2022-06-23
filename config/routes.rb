@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :post_images, only: [:new, :create, :index, :show, :destroy] do
   # コメントは投稿に対して、むすびつくので親子関係に[ネストするの状態]
   # そうしてparams[:post_image_id]でPostImageのidが取得できるようになる
+   resource :favorites, only: [:create, :destroy]
+  # 単数形にすると、/:idがURLに含まれなくなる↑
    resources :post_comments, only: [:create, :destroy]
   end
   
