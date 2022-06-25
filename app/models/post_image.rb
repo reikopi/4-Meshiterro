@@ -5,6 +5,12 @@ belongs_to :user
 has_many :post_comments, dependent: :destroy
 has_many :favorites, dependent: :destroy
 
+#imageが存在しているかを確認するバリデーション
+validates :image, presence: true
+#shop_nameが存在しているかを確認するバリデーション
+validates :shop_name, presence: true
+
+
 def get_image
     unless image.attached?
         file_path = Rails.root.join('app/assets/images/no_image.jpg')
